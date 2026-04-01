@@ -207,4 +207,4 @@ Payload::
 { sub: 'user123' }
 ```
 
-You can find the code and article details in this repo [jwt repo](https://github.com/gousejani/scripts)
+You can find the code and article details in this repo [jwt repo](https://github.com/gousejani/scripts/tree/main/jwt-dir)
