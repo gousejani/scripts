@@ -1,0 +1,30 @@
+#!/usr/bin/env node
+
+function base64UrlDecode(str) {
+  // Replace URL safe chars
+  str = str.replace(/-/g, "+").replace(/_/g, "/");
+
+  // Add padding if needed
+  while (str.length % 4) {
+    str += "=";
+  }
+
+  return Buffer.from(str, "base64").toString("utf8");
+}
+
+function decodeJwt(jwtToken) {
+  const [header, payload, signature] = jwtToken.split('.');
+  const decodedPayload = JSON.parse(base64UrlDecode(payload));
+  console.log("Payload::");
+  console.log(decodedPayload);
+}
+
+const jwtToken = process.argv[2];
+
+if (!jwtToken) {
+  console.error("token not found");
+  console.error("Usage: jwt <token>");
+  process.exit(0);
+}
+
+decodeJwt(jwtToken);
